@@ -16,19 +16,18 @@ VentaVo venta= new VentaVo();
 ProductoVo producto = new ProductoVo();
 List<VentaVo>lista=new ArrayList<>();
 String opcion=(request.getParameter("accion"));
-if (opcion.equals("Buscar Cliente")) {
-		Long cc = Long.parseLong(request.getParameter("cedulacliente"));
-		cliente.setCedula_cliente(cc);
-		cliente=Cc.consultarCliente(cc);
-		request.setAttribute("cliente", cliente);
-		
-	
-		}
+if (opcion.equals("Buscar Cliente")){
+	Long cc = Long.parseLong(request.getParameter("cedulacliente"));
+	cliente.setCedula_cliente(cc);
+	cliente=Cc.consultarCliente(cc);
+
+}
 else if(opcion.equals("Buscar Producto")){
 		int cd=Integer.parseInt(request.getParameter("codigoproducto"));
-		
 		producto=Pc.listar(cd);
-		
+		request.setAttribute("cliente", cliente);
+		request.setAttribute("Buscar", producto);
+		request.setAttribute("lista", lista);
 }
 else if(opcion.equals("Agregar")){
 	double totalPagar;
@@ -65,7 +64,7 @@ else if(opcion.equals("Agregar")){
     request.setAttribute("lista", lista);
 	
 }
-else if(opcion.equals("GenerarVenta")){
+else if(opcion.equals("Generar venta")){
 	double totalPagar;
 	int codigo;
 	double precio;
@@ -135,7 +134,7 @@ else if(opcion.equals("GenerarVenta")){
                             <label>Datos del cliente</label>
                         </div>
                         <div>
-                            <input type="text" name="cedulacliente" value="${cliente.getCedula_cliente()}" class="form-control" placeholder="Codigo">
+                            <input type="text" name="cedulacliente" value="<%=cliente.getCedula_cliente() %>" class="form-control" placeholder="Codigo">
                         </div>
                         <div class="botonesuno">
                             <input type="submit" name="accion" value="Buscar Cliente" class="btn btn-warning">
@@ -152,6 +151,7 @@ else if(opcion.equals("GenerarVenta")){
                                 <input type="text" name="codigoproducto" value="<%=producto.getcd() %>" class="form-control" placeholder="Codigo">
                             </div>
                             <div class="botonesuno">
+                            
                                 <input type="submit" name="accion" value="Buscar Producto" class="btn btn-warning">
                             </div>
                             <div class="col-sm-6">
@@ -208,10 +208,11 @@ else if(opcion.equals("GenerarVenta")){
                     </div>
                 <div class="card-footer d-flex">
                     <div class="col-sm-6">
-                        <a href="GestionVentas?opcion=GenerarVenta&accion=GenerarVenta" onclick="print()" class="btn btn-success">Generar Venta</a>
+                        
                         <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
                     </div>
                     <div class="col-sm-4 ml-aout">
+                            <button type="submit" name="accion" value="Generar venta" class="btn btn-outline-info">Generar</button>
                         <input type="text" name="txtTotal" value="$ ${totalpagar}" class="form-control">
                     </div>
                 </div>

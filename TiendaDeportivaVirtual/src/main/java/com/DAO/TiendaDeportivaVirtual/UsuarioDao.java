@@ -2,6 +2,8 @@ package com.DAO.TiendaDeportivaVirtual;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.DAO.TiendaDeportivaVirtual.UsuarioDao;
 import com.DTO.TiendaDeportivaVirtual.UsuarioVo;
@@ -140,6 +142,27 @@ public class UsuarioDao extends Conexion {
 	     }
 		return false;
        }
+	public List <UsuarioVo>listar() {
+		List <UsuarioVo> listau=new ArrayList<>();
+		try {
+			Conectar();
+			PreparedStatement sentencia = Conexion.prepareStatement("select * from usuarios ");
+			ResultSet datos = sentencia.executeQuery();
+			while(datos.next()) {
+				UsuarioVo usuario = new UsuarioVo();
+				usuario.setCedula_usuario(datos.getLong(1));
+				usuario.setNombre_usuario(datos.getString(2));
+				usuario.setEmail_usuario(datos.getString(3));
+				usuario.setUsuario(datos.getString(4));
+				usuario.setContrasena(datos.getString(5));
+				listau.add(usuario);
+			} 
+	} catch(Exception e) {
+	}return listau;
+
+		
+		
+	}
 	
 }
 

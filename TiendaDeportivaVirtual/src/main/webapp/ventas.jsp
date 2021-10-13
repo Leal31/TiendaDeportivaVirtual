@@ -35,7 +35,7 @@
                             <input type="text" name="codigocliente" value="${c.getDni()}" class="form-control" placeholder="Codigo">
                         </div>
                         <div class="botonesuno">
-                            <input type="submit" name="accion" value="BuscarCliente" class="botones">
+                            <input type="submit" name="accion" value="Buscar" class="botones">
                         </div>
                             <div class="col-sm-12">
                                 <input type="text" name="nombrescliente" value="${c.getNom()}" placeholder="Datos Cliente" class="form-control">
@@ -66,8 +66,8 @@
                         <div class="botonesuno">
                             <input type="submit" name="accion" value="Agregar" class="btn btn-outline-info">
                         </div>
-                        </form>
                     </div>
+                </form>
             </div>
             <div class="col-sm-8">
             <div class="card">

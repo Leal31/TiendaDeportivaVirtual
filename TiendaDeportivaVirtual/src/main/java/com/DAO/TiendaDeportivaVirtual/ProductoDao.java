@@ -51,7 +51,7 @@ public class ProductoDao extends Conexion {
 					System.out.println("no existe el nit " + producto.getNitproveedor());
 					
 				} else { // Si existe el proveedor
-					PreparedStatement sentencia = Conexion.prepareStatement("insert into productos(nombre_producto, Nitproveedor, precio_compra, ivacompra, precio_venta) values (?,?,?,?,?)");
+					PreparedStatement sentencia = Conexion.prepareStatement("insert into productos(nombre_producto, Nitproveedor, precio_compra, iva, precio_venta) values (?,?,?,?,?)");
 					sentencia.setString(1, producto.getNombre_producto());
 					sentencia.setLong(2, producto.getNitproveedor());
 					sentencia.setDouble(3, producto.getPrecio_compra());
@@ -100,7 +100,7 @@ public class ProductoDao extends Conexion {
 				Producto.setNombre_producto(datos.getString("nombre_producto"));
 				Producto.setNitproveedor(datos.getLong("Nitproveedor"));
 				Producto.setPrecio_compra(datos.getDouble("precio_compra"));
-				Producto.setIvacompra(datos.getLong("iva"));
+				Producto.setIvacompra(datos.getLong("ivacompra"));
 				Producto.setPrecio_venta(datos.getDouble("precio_venta"));
 				Desconectar();
 				return Producto;

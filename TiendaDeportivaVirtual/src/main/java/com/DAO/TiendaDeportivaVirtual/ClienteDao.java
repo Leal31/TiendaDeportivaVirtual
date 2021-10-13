@@ -1,7 +1,11 @@
 package com.DAO.TiendaDeportivaVirtual;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.DTO.TiendaDeportivaVirtual.ClienteVo;
+import com.DTO.TiendaDeportivaVirtual.UsuarioVo;
 // Inicio de clase tomando todo lo hecho con la conexion a la base de datos
 public class ClienteDao extends Conexion {
 	
@@ -105,5 +109,22 @@ public class ClienteDao extends Conexion {
 			return null;
 		}
 		return null;
-	}
+	}	public List <ClienteVo>listar() {
+		List <ClienteVo> listac=new ArrayList<>();
+		try {
+			Conectar();
+			PreparedStatement sentencia = Conexion.prepareStatement("select * from clientes ");
+			ResultSet datos = sentencia.executeQuery();
+			while(datos.next()) {
+				ClienteVo cliente = new ClienteVo();
+				cliente.setCedula_cliente(datos.getLong(1));
+				cliente.setNombre_cliente(datos.getString(2));
+				cliente.setDireccion_cliente(datos.getString(3));
+				cliente.setTelefono_cliente(datos.getString(4));
+				cliente.setEmail_cliente(datos.getString(5));
+				listac.add(cliente);
+			} 
+	} catch(Exception e) {
+	}return listac;
+}
 }
