@@ -1,5 +1,6 @@
 @charset "ISO-8859-1";
 
+/****Estilos formulario login*****/
 #formulario{
     background-image:url("https://i.ibb.co/nr9ZdB5/lau-dani-copia-1.jpg");
     -webkit-background-size: cover;
@@ -58,6 +59,7 @@
 .botones input:hover{
     background-color: #e50051;
 }
+/***Diseño elementos pagina de inicio ****/
 #inicio{
     border-bottom: 6px double #ffcb24;
     padding-bottom: 10px;
@@ -103,10 +105,11 @@
     border-radius: 3px;
 }
 
+/***Diseño interfaz de usuarios, clientes y proveedores***/
 table{
     margin: 100px auto;
 }
-
+/*Diseño texto para las casillas de ingreso de información*/
 label{
     width: 200px;
     float: left;
@@ -115,14 +118,14 @@ label{
     font-family: 'Montserrat', sans-serif;
 }
 
-
+/*Diseño casillas para ingresar datos*/
 
 table input{
     margin-left: -20px;
     border-radius: 3px;
 }
 
-
+/*Diseño botones de la interfaz usuarios, clientes y proveedores*/
 .botones input{
     background-color:#ffcb24;
     color: black;
@@ -145,6 +148,7 @@ table input{
     background-color:#e50051;
     color: white;
 }
+/****Diseño interfaz cargar lista de productos**/
 #productos table{
     margin: 150px auto;
 }
@@ -168,7 +172,7 @@ table input{
 }
 /****Diseño interfaz grafica de ventas***/
 
-
+/*primera tabla de ventas*/
 
 .botonesuno input{
     background-color:#ffcb24;
@@ -201,29 +205,32 @@ table input{
     margin-top: -70px;
 }
 
+/******Diseño interfaz grafica de reportes****/
 #tablas{
     margin-top: 120px;
 }
-#tablas .listados{
-    background-color:rgb(167, 163, 163);
+#tablas .listados input{
+    background-color:#ffcb24;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
     border: none;
-    margin: 30px auto;
     padding: 10px;
     border-radius: 10px;
     position:relative; 
-    width: 300px;  
-}
-
-#tablas .listados a{
-    text-decoration: none;
+    margin: 50px 25px; 
+    width:300px;  
+    left: 30%;
+    transition-property: background-color;
+    transition-duration: 1s;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-bottom: 30px;
+    margin-left: 120px;
+    margin-right: 0px;
+} 
+#tablas .listados input:hover{
+    background-color:#e50051;
     color: white;
-    font-size: 20px;
-    text-align: center;
-}
-
-
-#listado p{
-    text-align: center;
-    color: gray;
-    font-size: 25px;
 }
