@@ -35,7 +35,7 @@
                             <input type="text" name="codigocliente" value="${c.getDni()}" class="form-control" placeholder="Codigo">
                         </div>
                         <div class="botonesuno">
-                            <input type="submit" name="accion" value="Buscar" class="botones">
+                            <input type="button" name="accion" value="Buscar" class="botones">
                         </div>
                             <div class="col-sm-12">
                                 <input type="text" name="nombrescliente" value="${c.getNom()}" placeholder="Datos Cliente" class="form-control">
@@ -49,7 +49,7 @@
                                 <input type="text" name="codigoproducto" value="${producto.getId()}" class="form-control" placeholder="Codigo">
                             </div>
                             <div class="botonesuno">
-                                <input type="submit" name="accion" value="Buscar">
+                                <input type="button" name="accion" value="Buscar">
                             </div>
                             <div class="col-sm-6">
                                 <input type="text" name="nomproducto" value="${producto.getNom()}" placeholder="Datos Producto" class="form-control">
@@ -103,7 +103,7 @@
                     </div>
                 <div class="card-footer d-flex">
                     <div class="col-sm-6">
-                        <a href="Controlador?menu=NuevaVenta&accion=GenerarVenta" onclick="print()" class="btn btn-success">Generar Venta</a>
+                        <input type = "submit" name = "accion" value = "Generar Venta" href = "GestionVentas.jsp" class="btn btn-success">
                         <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
                     </div>
                     <div class="col-sm-4 ml-aout">

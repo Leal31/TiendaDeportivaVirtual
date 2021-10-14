@@ -1,4 +1,4 @@
-<%String opcion=(request.getParameter("boton"));
+	<%String opcion=(request.getParameter("boton"));
 if (opcion.equals("Listado de usuarios")){
 	Long cc = Long.parseLong(request.getParameter("cedulacliente"));
 	cliente.setCedula_cliente(cc);

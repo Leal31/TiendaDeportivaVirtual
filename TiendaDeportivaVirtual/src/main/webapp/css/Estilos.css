@@ -234,3 +234,9 @@ table input{
     background-color:#e50051;
     color: white;
 }
+/Estilos listados/
+
+table thead{
+	background-color:#ffcb24;
+	width: 100%;
+}
