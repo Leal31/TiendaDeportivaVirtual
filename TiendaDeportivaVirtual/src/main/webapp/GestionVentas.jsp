@@ -65,35 +65,17 @@ else if(opcion.equals("Agregar")){
 	
 }
 else if(opcion.equals("Generar venta")){
-	double totalPagar;
-	int codigo;
-	double precio;
-	int cantidad;
-	double subtotal;
-	double totalcon;
-	totalcon=0.0;
-	String descripcion;
-	totalPagar=0.0;
-	int iva=19;
-	codigo=producto.getcd();
-	descripcion=request.getParameter("nomproducto");
-	precio=Double.parseDouble(request.getParameter("precio"));
-	cantidad = Integer.parseInt(request.getParameter("cant"));
-	subtotal=precio*cantidad;
-	totalcon=(subtotal*0.19)+subtotal;
 	venta= new VentaVo();
-	venta.setCodigo_producto(codigo);
-	venta.setDescripcionP(descripcion);
-	venta.setValor_u(precio);
-	venta.setCantidad_producto(cantidad);
-	venta.setTotal_venta(subtotal);
-	venta.setValor_total(totalcon);
-	venta.setIvaVenta(iva);
-	venta.setCedula_usuario(user.getCedula_usuario());
-	venta.setCedula_cliente(cliente.getCedula_cliente());
-	venta.setIvaVenta(venta.getIvaVenta());
+	String descripcion;
+	descripcion=request.getParameter("nomproducto");
+	venta.setCedula_cliente(1);
+	venta.setCedula_usuario(123456);
+	venta.setDescripcionP(venta.getDescripcionP());
+	venta.setValor_u(venta.getValor_u());
+	venta.setCantidad_producto(venta.getCantidad_producto());
 	venta.setTotal_venta(venta.getTotal_venta());
 	venta.setValor_total(venta.getValor_venta());
+	venta.setIvaVenta(venta.getIvaVenta());
 	Vc.guardarVenta(venta);
 	
 	
@@ -175,6 +157,7 @@ else if(opcion.equals("Generar venta")){
             </div>
             <div class="col-sm-8">
             <div class="card">
+            <form action="GestionVentas.jsp" method="POST">
                 <div class="card-body">
                     <div class="col-sm-5 ml-aout">
                         <label>NumeroSerie</label>
@@ -217,7 +200,7 @@ else if(opcion.equals("Generar venta")){
                     </div>
                 </div>
                 </div>
-            </div>
+                </form>
         </div>
     </div>  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>

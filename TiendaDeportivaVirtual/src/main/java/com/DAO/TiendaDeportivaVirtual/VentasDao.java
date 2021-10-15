@@ -18,32 +18,37 @@ public class VentasDao extends Conexion {
     
 
     public void guardarVenta(VentaVo ve){
-        String sql ="insert into ventas(cedula_usuario, cedula_cliente, Ivaventa, Total_venta,Valor_venta)values(?,?,?,?,?)";
         try {
-            con=cn.Conexion;
-            ps=con.prepareStatement(sql);
-            ps.setLong(1, ve.getCedula_usuario());
-            ps.setLong(2, ve.getCedula_cliente());
-            ps.setDouble(3, ve.getIvaVenta());
-            ps.setDouble(4, ve.getTotal_venta());
-            ps.setDouble(5, ve.getValor_venta());
-            ps.executeUpdate();
+        	Conectar();
+        	PreparedStatement ventas = 
+        			Conexion.prepareStatement("insert into ventas(cedula_usuario, cedula_cliente, ivaventa, total_venta, valor_venta)values(?,?,?,?,?)");
+        	ventas.setLong(1, ve.getCedula_usuario());
+            ventas.setLong(2, ve.getCedula_cliente());
+            ventas.setDouble(3, ve.getIvaVenta());
+            ventas.setDouble(4, ve.getTotal_venta());
+            ventas.setDouble(5, ve.getValor_venta());
+            System.out.println("paso");
+            ventas.executeUpdate();
+            System.out.println("paso");
         } catch (Exception e) {
+        	System.out.println("Error"+e);
         }
+        Desconectar();
         
     }
     public int guardarDetalleventas(VentaVo venta){
-        String sql="insert into detalle_ventas(codigo_producto,cantidad_producto,valor_unitario,valor_total)values(?,?,?,?)";
         try {
-            con=cn.Conexion;
-            ps=con.prepareStatement(sql);
-            ps.setLong(1, venta.getCodigo_producto());
-            ps.setLong(2, venta.getCantidad_producto());
-            ps.setDouble(3, venta.getValor_u());
-            ps.setDouble(4, venta.getValor_total());
-            ps.executeUpdate();
+        	Conectar();
+        	PreparedStatement ventas = Conexion.prepareStatement("insert into detalle_ventas(codigo_producto,cantidad_producto,valor_unitario,valor_total)values(?,?,?,?)");
+            ventas.setLong(1, venta.getCedula_usuario());
+            ventas.setLong(2, venta.getCedula_cliente());
+            ventas.setDouble(3, venta.getIvaVenta());
+            ventas.setDouble(4, venta.getTotal_venta());
+            ventas.setDouble(5, venta.getValor_venta());
+            ventas.executeUpdate();
         } catch (Exception e) {
         }
+        Desconectar();
         return r;
     }
     public List <VentaVo>listar() {
