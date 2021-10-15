@@ -65,19 +65,26 @@ else if(opcion.equals("Agregar")){
 	
 }
 else if(opcion.equals("Generar venta")){
+	for(int i=0; i<lista.size();i++){
+		venta= new VentaVo();
+		venta.setValor_venta(lista.get(i).getValor_venta());
+		venta.setTotal_venta(lista.get(i).getTotal_venta());
+		System.out.println(lista.get(i).getTotal_venta()+"");
+		Vc.guardarVenta(venta);
+	}
+	double valorventa=0.0;
+	int iva=19;
+	double precio=0.0;
 	venta= new VentaVo();
 	String descripcion;
-	descripcion=request.getParameter("nomproducto");
+	valorventa=Double.parseDouble(request.getParameter("txtTotal"));
 	venta.setCedula_cliente(1);
 	venta.setCedula_usuario(123456);
-	venta.setDescripcionP(venta.getDescripcionP());
-	venta.setValor_u(venta.getValor_u());
-	venta.setCantidad_producto(venta.getCantidad_producto());
-	venta.setTotal_venta(venta.getTotal_venta());
-	venta.setValor_total(venta.getValor_venta());
-	venta.setIvaVenta(venta.getIvaVenta());
+	System.out.println(venta.getTotal_venta()+"valor unidad");
+	venta.setTotal_venta(precio);	
+	venta.setIvaVenta(iva);
+	venta.setValor_venta(valorventa);
 	Vc.guardarVenta(venta);
-	
 	
 }
     
@@ -108,9 +115,10 @@ else if(opcion.equals("Generar venta")){
     </div>  
 </div>    
     <div class="d-flex">
+    <form action="GestionVentas.jsp" method="POST">
         <div class="col-sm-4 parte01">
             <div class="card">
-                <form action="GestionVentas.jsp" method="POST">
+                
                     <div class="card-body">
                         <div class="form-group">
                             <label>Datos del cliente</label>
@@ -152,12 +160,10 @@ else if(opcion.equals("Generar venta")){
                             <input type="submit" name="accion" value="Agregar" class="btn btn-warning"">
                             <input type="submit" name="accion" value="GenerarVenta" class="btn btn-warning"">
                         </div>
-                        </form>
                     </div>
             </div>
             <div class="col-sm-8">
             <div class="card">
-            <form action="GestionVentas.jsp" method="POST">
                 <div class="card-body">
                     <div class="col-sm-5 ml-aout">
                         <label>NumeroSerie</label>
@@ -196,13 +202,12 @@ else if(opcion.equals("Generar venta")){
                     </div>
                     <div class="col-sm-4 ml-aout">
                             <button type="submit" name="accion" value="Generar venta" class="btn btn-outline-info">Generar</button>
-                        <input type="text" name="txtTotal" value="$ ${totalpagar}" class="form-control">
+                        <input type="text" name="txtTotal" value="${totalpagar}" class="form-control">
                     </div>
                 </div>
                 </div>
                 </form>
         </div>
-    </div>  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js" integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u" crossorigin="anonymous"></script>
